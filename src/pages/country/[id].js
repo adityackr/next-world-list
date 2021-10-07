@@ -93,11 +93,13 @@ const Country = ({ country }) => {
                             <div className={styles.details_panel_label}>
                                 Currencies
                             </div>
-                            <div className={styles.details_panel_value}>
-                                {country.currencies
-                                    .map(({ name }) => name)
-                                    .join(', ')}
-                            </div>
+                            {country.currencies && (
+                                <div className={styles.details_panel_value}>
+                                    {country.currencies
+                                        .map(({ name }) => name)
+                                        .join(', ')}
+                                </div>
+                            )}
                         </div>
 
                         <div className={styles.details_panel_row}>
@@ -127,14 +129,14 @@ const Country = ({ country }) => {
                                     styles.details_panel_borders_container
                                 }
                             >
-                                {borders.map(({ flag, name, i }) => (
+                                {borders.map(({ flag, bName, i }) => (
                                     <div
                                         key={i}
                                         className={
                                             styles.details_panel_borders_country
                                         }
                                     >
-                                        <img src={flag} alt={name} />
+                                        <img src={flag} alt={bName} />
 
                                         <div
                                             className={
@@ -166,7 +168,7 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        fallback: true,
+        fallback: false,
     };
 };
 
