@@ -143,7 +143,7 @@ const Country = ({ country }) => {
                                                 styles.details_panel_borders_name
                                             }
                                         >
-                                            {name}
+                                            {bName}
                                         </div>
                                     </div>
                                 ))}
