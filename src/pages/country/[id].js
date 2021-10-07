@@ -129,21 +129,21 @@ const Country = ({ country }) => {
                                     styles.details_panel_borders_container
                                 }
                             >
-                                {borders.map(({ flag, bName, i }) => (
+                                {borders.map(({ flag, name, i }) => (
                                     <div
                                         key={i}
                                         className={
                                             styles.details_panel_borders_country
                                         }
                                     >
-                                        <img src={flag} alt={bName} />
+                                        <img src={flag} alt={name} />
 
                                         <div
                                             className={
                                                 styles.details_panel_borders_name
                                             }
                                         >
-                                            {bName}
+                                            {name}
                                         </div>
                                     </div>
                                 ))}
