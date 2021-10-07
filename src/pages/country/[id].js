@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import styles from './Country.module.css';
 
@@ -15,17 +14,17 @@ const getCountry = async (id) => {
 const Country = ({ country }) => {
     const [borders, setBorders] = useState([]);
 
-    const getBorders = async () => {
+    const getBorders = useCallback(async () => {
         const borders = await Promise.all(
             country.borders.map((border) => getCountry(border))
         );
 
         setBorders(borders);
-    };
+    }, [country.borders]);
 
     useEffect(() => {
         getBorders();
-    }, []);
+    }, [getBorders]);
 
     return (
         <Layout title={country.name}>
@@ -167,7 +166,7 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 };
 
